@@ -1,0 +1,57 @@
+[
+  {
+    "event_id": "evt-10001",
+    "timestamp": 1718000000.0,
+    "user_id": 42,
+    "action": "purchase",
+    "metadata": {"source": "mobile", "version": "1.0"}
+  },
+  {
+    "event_id": "evt-10002",
+    "timestamp": 1718000010.0,
+    "usr_id": 99,
+    "action": "click",
+    "metadata": {"source": "web", "version": "1.0"}
+  },
+  {
+    "event_id": "evt-10003",
+    "tmestamp": "1718000020.0",
+    "user_id": "not-a-number",
+    "acton": "page_view"
+  },
+  {
+    "event_id": "evt-10004",
+    "timestamp": 1718000030.0,
+    "user_id": 7,
+    "action": "signup",
+    "metadata": {"source": "api", "version": "1.0"},
+    "extra_field": true
+  },
+  {
+    "event_id": "evt-10005",
+    "user_id": 55,
+    "action": "purchase",
+    "metadata": {"source": "mobile"}
+  },
+  {
+    "event_id": "evt-10006",
+    "timestamp": 1718000050.0,
+    "user_id": 101,
+    "action": "click",
+    "metadata": {"source": "web", "version": "1.0"}
+  },
+  {
+    "event_id": "evt-10007",
+    "timestamp": 1718000060.0,
+    "userr_id": 88,
+    "action": "page_view",
+    "metadata": {"source": "web", "version": "1.0"}
+  },
+  {
+    "event_id": "evt-10008",
+    "timestamp": 1718000070.0,
+    "user_id": 23,
+    "action": "purchase",
+    "metadata": {"source": "mobile", "version": "1.0"}
+  }
+]

@@ -1,0 +1,5 @@
+# WarpSchema adapter dependencies
+aiokafka>=0.10.0,<1.0
+aiohttp>=3.9,<4.0
+boto3>=1.34,<2.0
+requests>=2.31,<3.0

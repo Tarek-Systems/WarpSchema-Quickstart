@@ -1,0 +1,71 @@
+# =============================================================================
+# WarpSchema Self-Healing Data Gateway — Local Trial Stack
+# =============================================================================
+# Prerequisites: Docker ≥ 24, Docker Compose V2
+# Usage:
+#   1. cp .env.example .env   (fill in your trial license key)
+#   2. docker compose up -d
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Core gateway (proprietary image you have already published)
+  # ---------------------------------------------------------------------------
+  gateway:
+    image: ghcr.io/warpschema/gateway:trial-latest
+    restart: unless-stopped
+    ports:
+      - "${GATEWAY_PORT:-8000}:8000"    # FastAPI ingestion endpoint
+      - "${DASHBOARD_PORT:-8501}:8501"  # Streamlit HITL dashboard
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-warpschema}:${POSTGRES_PASSWORD:-warpschema}@postgres:5432/${POSTGRES_DB:-warpschema}
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ---------------------------------------------------------------------------
+  # Schema Registry backing store
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-warpschema}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-warpschema}
+      POSTGRES_DB: ${POSTGRES_DB:-warpschema}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-warpschema}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Embedding / result cache
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pg_data:
+  redis_data:
