@@ -1,6 +1,6 @@
 # WarpSchema: The Self-Healing Data Gateway — Integration Guide
 
-> **Trial Edition** — evaluate WarpSchema locally with your own data pipelines.
+> **Trial Edition**: evaluate WarpSchema locally with your own data pipelines.
 
 ---
 
