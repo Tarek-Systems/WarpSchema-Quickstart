@@ -44,7 +44,7 @@
 
 - Docker ≥ 24 and Docker Compose V2
 - Python ≥ 3.10 (for adapters and `warp-check.py`)
-- A trial license key — request one at **<https://warpschema.io/trial>**
+- A trial license key — request one at **<https://warpschema.tarek.systems/trial>**
 
 ### Step 1 — Clone
 
@@ -149,7 +149,7 @@ To remove these limits and unlock multi-node clustering, SSO integration,
 custom ONNX model uploads, and dedicated support:
 
 📧 **sales@warpschema.io**
-🌐 **<https://warpschema.io/pricing>**
+🌐 **<https://warpschema.tarek.systems/pricing>**
 
 ---
 
