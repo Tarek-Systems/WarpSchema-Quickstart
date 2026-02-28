@@ -163,4 +163,4 @@ WarpSchema Enterprise License Agreement included in the image.
 
 ---
 
-*Built by the WarpSchema team — reliability engineering for the streaming era.*
+*Built by the WarpSchema team: reliability engineering for the streaming era.*
