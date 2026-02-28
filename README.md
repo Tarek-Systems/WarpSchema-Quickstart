@@ -148,7 +148,7 @@ The trial edition is limited to:
 To remove these limits and unlock multi-node clustering, SSO integration,
 custom ONNX model uploads, and dedicated support:
 
-📧 **sales@warpschema.io**
+📧 **sales@tarek.systems**
 🌐 **<https://warpschema.tarek.systems/pricing>**
 
 ---
